@@ -1,6 +1,7 @@
 $(document).ready(function() {
-  // Add spans to the <p> elements
+  // Add spans to <h1-6>, <p>, and <li> elements
   makeSpans();
+
 
   // The idea here is that if you click an element, its text opacity goes to
   // 0.0, making it totally transparent. But if you click it again, it goes
@@ -32,20 +33,17 @@ $(document).ready(function() {
 // Takes a paragraph and puts spans in each of them. Credit for this idea
 // goes to Daniel Tonon (http://stackoverflow.com/a/20850348)
 function makeSpans() {
-  // For each element
+  // For each element that can be guaranteed to be text
   $("h1, h2, h3, h4, h5, h6, p, li").each(function() {
     // take all the HTML and replace all words with the word
     // encapsulated in spans
     var newStr = $(this).text();
-    // newStr.replace(/\w+/g, function replacer(match) {
-    //   var r = "<span>" + match + "</span>";
-    //   return r;
-    // });
+
+    // wrap every valid word with span tags
     newStr = newStr.replace(/\w+/g, function replacer(match) {
       var r = "<span>" + match + "</span>";
       return r;
     });
-    console.log(newStr);
 
     // empty the original element
     $(this).empty();
