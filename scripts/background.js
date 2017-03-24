@@ -1,10 +1,14 @@
+var b = false;
+
 chrome.browserAction.onClicked.addListener(function(tab) {
-  // alert("clicked");
+  alert("clicked");
 
-
-
-  // Reloads the page
-  // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  //   chrome.tabs.reload(tabs[0].id);
-  // });
+  if (!b) {
+    // Reloads the page
+    chrome.tabs.executeScript(null, {file: "scripts/content.js"});
+    b = true;
+  } else {
+    b = false;
+    chrome.tabs.reload();
+  }
 });
